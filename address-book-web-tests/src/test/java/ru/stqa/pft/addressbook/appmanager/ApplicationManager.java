@@ -1,14 +1,14 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class ApplicationManager {
-  public WebDriver driver;
+  FirefoxDriver driver;
+  private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
   private GroupHelper groupHelper;
@@ -24,6 +24,7 @@ public class ApplicationManager {
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);
     sessionHelper = new SessionHelper(driver);
+    contactHelper = new ContactHelper(driver);
     sessionHelper.login("admin", "secret");
   }
 
@@ -43,4 +44,7 @@ public class ApplicationManager {
     return sessionHelper;
   }
 
+  public ContactHelper getContactHelper() {
+    return contactHelper;
+  }
 }
