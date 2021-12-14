@@ -87,13 +87,13 @@
       <recent name="ru.stqa.pft.sandbox" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ContactsCreation">
-    <configuration name="ContactCreationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.ContactDeletionTests.testDeletionContact">
+    <configuration name="ContactDeletionTests.testDeletionContact" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/address-book-web-tests" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.group_tests.ContactCreationTests&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.contact_test.ContactDeletionTests.testDeletionContact&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -109,12 +109,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ContactsCreation" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ContactModificationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/address-book-web-tests" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.group_tests.ContactsCreation&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.contact_test.ContactModificationTests&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -130,12 +130,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GroupCreationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ContactModificationTests.testAddToTheGroup" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/address-book-web-tests" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.group_tests.GroupCreationTests&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.contact_test.ContactModificationTests.testAddToTheGroup&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -151,12 +151,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GroupDeletionTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ContactModificationTests.testContactsModification" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/address-book-web-tests" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.group_tests.GroupDeletionTests&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.contact_test.ContactModificationTests.testContactsModification&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -172,12 +172,12 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="GroupModificationTests" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ContactModificationTests.testRemoveContactFromGroup" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$/address-book-web-tests" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.group_tests.GroupModificationTests&quot;" />
+        <option name="scriptParameters" value="--tests &quot;ru.stqa.pft.addressbook.tests.contact_test.ContactModificationTests.testRemoveContactFromGroup&quot;" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -195,11 +195,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Gradle.ContactsCreation" />
-        <item itemvalue="Gradle.GroupCreationTests" />
-        <item itemvalue="Gradle.GroupDeletionTests" />
-        <item itemvalue="Gradle.GroupModificationTests" />
-        <item itemvalue="Gradle.ContactCreationTests" />
+        <item itemvalue="Gradle.ContactDeletionTests.testDeletionContact" />
+        <item itemvalue="Gradle.ContactModificationTests" />
+        <item itemvalue="Gradle.ContactModificationTests.testRemoveContactFromGroup" />
+        <item itemvalue="Gradle.ContactModificationTests.testAddToTheGroup" />
+        <item itemvalue="Gradle.ContactModificationTests.testContactsModification" />
       </list>
     </recent_temporary>
   </component>
@@ -240,5 +240,8 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/ContactsCreation_java$ContactModificationTests_testAddToTheGroup.ic" NAME="ContactModificationTests.testAddToTheGroup Coverage Results" MODIFIED="1639431408184" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

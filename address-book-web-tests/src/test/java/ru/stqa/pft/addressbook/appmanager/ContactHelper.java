@@ -1,7 +1,9 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import ru.stqa.pft.addressbook.model.ContactData1;
 
 public class ContactHelper {
@@ -23,6 +25,50 @@ public class ContactHelper {
     driver.findElement(By.cssSelector("input:nth-child(87)")).click();
   }
 
+  public void selectCheckbox() {
+    driver.findElement(By.id("12")).click();
+  }
+
+  public void editContact() {
+    driver.findElement(By.cssSelector(".odd:nth-child(3) > .center:nth-child(8) img")).click();
+  }
+
+  public void deleteContact() {
+    driver.findElement(By.cssSelector("input:nth-child(2)")).click();
+  }
+
+  public void selectTheGroup() {
+    driver.findElement(By.name("to_group")).click();
+    {
+      WebElement dropdown = driver.findElement(By.name("to_group"));
+      dropdown.findElement(By.xpath("//option[. = 'name']")).click();
+    }
+  }
+
+  public void confirmSelectedGroup() {
+    driver.findElement(By.cssSelector("select:nth-child(2) > option:nth-child(10)")).click();
+  }
+
+  public void addToTheGroup() {
+    driver.findElement(By.name("add")).click();
+  }
+
+  public void goToSelectedGroupPage() {
+    driver.findElement(By.linkText("group page \"name\"")).click();
+  }
+
+  public void removeContactFromGroup() {
+    driver.findElement(By.name("remove")).click();
+  }
+
+  public void selectGroupFromUserCard() {
+    driver.findElement(By.linkText("name")).click();
+  }
+
+  public void selectUserCard() {
+    driver.findElement(By.cssSelector("tr:nth-child(6) > .center:nth-child(7) img")).click();
+  }
+
   public void fillContactForm(ContactData1 contactData1) {
     driver.findElement(By.name("firstname")).click();
     driver.findElement(By.name("firstname")).sendKeys(contactData1.firstName());
@@ -41,5 +87,30 @@ public class ContactHelper {
     driver.findElement(By.name("email")).click();
     driver.findElement(By.name("email")).sendKeys(contactData1.email());
   }
+
+  public void fillBday() {
+    driver.findElement(By.cssSelector(".odd:nth-child(3) > .center:nth-child(8) img")).click();
+    driver.findElement(By.name("bday")).click();
+    {
+      WebElement dropdown = driver.findElement(By.name("bday"));
+      dropdown.findElement(By.xpath("//option[. = '1']")).click();
+    }
+    driver.findElement(By.cssSelector("select:nth-child(63) > option:nth-child(3)")).click();
+    driver.findElement(By.name("bmonth")).click();
+    {
+      WebElement dropdown = driver.findElement(By.name("bmonth"));
+      dropdown.findElement(By.xpath("//option[. = 'January']")).click();
+    }
+    driver.findElement(By.cssSelector("select:nth-child(64) > option:nth-child(3)")).click();
+    driver.findElement(By.name("byear")).click();
+    driver.findElement(By.name("byear")).sendKeys("1999");
+  }
+
+  public void pushEnter() {
+    driver.findElement(By.name("byear")).sendKeys(Keys.ENTER);
+  }
+
+
+
 
 }
