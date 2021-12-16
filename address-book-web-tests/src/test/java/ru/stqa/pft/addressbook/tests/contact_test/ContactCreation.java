@@ -8,7 +8,7 @@ import org.openqa.selenium.By;
 import ru.stqa.pft.addressbook.model.ContactData1;
 import ru.stqa.pft.addressbook.tests.TestBase;
 
-public class ContactsCreation extends TestBase {
+public class ContactCreation extends TestBase {
 
   @Test
   public void testContactCreation() {

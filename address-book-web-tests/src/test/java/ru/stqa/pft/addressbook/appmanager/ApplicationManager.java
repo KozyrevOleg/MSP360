@@ -1,13 +1,20 @@
 package ru.stqa.pft.addressbook.appmanager;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.remote.Browser;
+import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.HashMap;
 import java.util.Map;
 
+
+
 public class ApplicationManager {
-  FirefoxDriver driver;
+  WebDriver driver;
+  private Browser browser;
   private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
@@ -15,9 +22,20 @@ public class ApplicationManager {
   public Map<String, Object> vars;
   JavascriptExecutor js;
 
+  public ApplicationManager(Browser browser) {
+    this.browser = browser;
+  }
+
   public void init() {
     System.setProperty("webdriver.gecko.driver", "C:\\Java test\\Selenium\\geckodriver.exe");
-    driver = new FirefoxDriver();
+    System.setProperty("webdrider.chrome.driver", "C:\\Java test\\Selenium\\chrome.exe");
+    if (browser.equals(Browser.FIREFOX)) {
+      driver = new FirefoxDriver();
+    } else if (browser.equals(Browser.CHROME)) {
+      driver = new ChromeDriver();
+    } else if (browser.equals(Browser.SAFARI)) {
+      driver = new SafariDriver();
+    }
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
     driver.get("http://localhost:8080/addressbook/");
