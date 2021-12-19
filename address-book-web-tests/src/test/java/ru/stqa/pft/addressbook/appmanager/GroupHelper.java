@@ -4,47 +4,43 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import ru.stqa.pft.addressbook.model.GroupData;
 
-public class GroupHelper {
-  public WebDriver driver;
+public class GroupHelper extends BaseHelper{
 
   public GroupHelper(WebDriver driver) {
-    this.driver = driver;
+    super(driver);
   }
 
   public void returnGroupPage() {
-    driver.findElement(By.linkText("group page")).click();
+    click(By.linkText("group page"));
   }
 
   public void submitGroupCreation() {
-    driver.findElement(By.name("submit")).click();
+    click(By.name("submit"));
   }
 
   public void fillGroupForm(GroupData groupData) {
-    driver.findElement(By.name("group_name")).click();
-    driver.findElement(By.name("group_name")).sendKeys(groupData.name());
-    driver.findElement(By.name("group_header")).click();
-    driver.findElement(By.name("group_header")).sendKeys(groupData.header());
-    driver.findElement(By.name("group_footer")).click();
-    driver.findElement(By.name("group_footer")).sendKeys(groupData.footer());
+    type(By.name("group_name"), groupData.name());
+    type(By.name("group_header"), groupData.header());
+    type(By.name("group_footer"), groupData.footer());
   }
 
   public void initGroupCreation() {
-    driver.findElement(By.name("new")).click();
+    click(By.name("new"));
   }
 
   public void deleteSelectedGroup() {
-    driver.findElement(By.cssSelector("input:nth-child(12)")).click();
+    click(By.cssSelector("input:nth-child(12)"));
   }
 
   public void selectGroup() {
-    driver.findElement(By.cssSelector(".group:nth-child(9) > input")).click();
+    click(By.cssSelector(".group:nth-child(9) > input"));
   }
 
   public void initGroupModification() {
-    driver.findElement(By.name("edit")).click();
+    click(By.name("edit"));
   }
 
   public void submitGroupModification() {
-    driver.findElement(By.name("update")).click();
+    click(By.name("update"));
   }
 }

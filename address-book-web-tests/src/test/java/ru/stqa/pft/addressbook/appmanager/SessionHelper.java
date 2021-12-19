@@ -4,18 +4,17 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 
-public class SessionHelper {
-  private WebDriver driver;
+public class SessionHelper extends BaseHelper {
 
   public SessionHelper(WebDriver driver) {
-    this.driver = driver;
+    super(driver);
   }
 
   public void login(String username, String password) {
     driver.manage().window().setSize(new Dimension(752, 695));
-    driver.findElement(By.name("user")).sendKeys(username);
-    driver.findElement(By.name("pass")).click();
-    driver.findElement(By.name("pass")).sendKeys(password);
-    driver.findElement(By.cssSelector("input:nth-child(7)")).click();
+    type(By.name("user"),username);
+    click(By.name("pass"));
+    type(By.name("pass"),password);
+    click(By.cssSelector("input:nth-child(7)"));
   }
 }

@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class ApplicationManager {
   WebDriver driver;
-  private Browser browser;
+  public Browser browser;
   private ContactHelper contactHelper;
   private SessionHelper sessionHelper;
   private NavigationHelper navigationHelper;
@@ -28,13 +28,13 @@ public class ApplicationManager {
 
   public void init() {
     System.setProperty("webdriver.gecko.driver", "C:\\Java test\\Selenium\\geckodriver.exe");
-    System.setProperty("webdrider.chrome.driver", "C:\\Java test\\Selenium\\chrome.exe");
+    System.setProperty("webdriver.chrome.driver", "C:\\Java test\\Selenium\\chromedriver.exe");
     if (browser.equals(Browser.FIREFOX)) {
       driver = new FirefoxDriver();
     } else if (browser.equals(Browser.CHROME)) {
       driver = new ChromeDriver();
     } else if (browser.equals(Browser.SAFARI)) {
-      driver = new SafariDriver();
+     driver = new SafariDriver();
     }
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
