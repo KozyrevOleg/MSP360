@@ -1,12 +1,11 @@
 package ru.stqa.pft.addressbook.appmanager;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.junit.Assert;
+import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData1;
 
-public class ContactHelper extends BaseHelper{
+public class ContactHelper extends BaseHelper {
 
   public ContactHelper(WebDriver driver) {
     super(driver);
@@ -14,10 +13,6 @@ public class ContactHelper extends BaseHelper{
 
   public void addNewContact() {
     click(By.linkText("add new"));
-  }
-
-  public void goToHomePage () {
-    click(By.linkText("home page"));
   }
 
   public void submitContactCreation() {
@@ -68,7 +63,7 @@ public class ContactHelper extends BaseHelper{
     click(By.cssSelector("tr:nth-child(6) > .center:nth-child(7) img"));
   }
 
-  public void fillContactForm(ContactData1 contactData1) {
+  public void fillContactForm(ContactData1 contactData1, boolean creation) {
     click(By.name("firstname"));
     typeContact(By.name("firstname"), contactData1.firstName());
     click(By.name("middlename"));
@@ -85,31 +80,33 @@ public class ContactHelper extends BaseHelper{
     typeContact(By.name("mobile"), contactData1.mobilePhone());
     click(By.name("email"));
     typeContact(By.name("email"), contactData1.email());
-  }
 
-  public void fillBday() {
-    driver.findElement(By.cssSelector(".odd:nth-child(3) > .center:nth-child(8) img")).click();
-    driver.findElement(By.name("bday")).click();
-    {
-      WebElement dropdown = driver.findElement(By.name("bday"));
-      dropdown.findElement(By.xpath("//option[. = '1']")).click();
+    if (creation) {
+      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData1.group());
+    } else {
+      Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
-    click(By.cssSelector("select:nth-child(63) > option:nth-child(3)"));
-    click(By.name("bmonth"));
-    {
-      WebElement dropdown = driver.findElement(By.name("bmonth"));
-      dropdown.findElement(By.xpath("//option[. = 'January']")).click();
+  }
+
+    public void fillBday () {
+      driver.findElement(By.cssSelector(".odd:nth-child(3) > .center:nth-child(8) img")).click();
+      driver.findElement(By.name("bday")).click();
+      {
+        WebElement dropdown = driver.findElement(By.name("bday"));
+        dropdown.findElement(By.xpath("//option[. = '1']")).click();
+      }
+      click(By.cssSelector("select:nth-child(63) > option:nth-child(3)"));
+      click(By.name("bmonth"));
+      {
+        WebElement dropdown = driver.findElement(By.name("bmonth"));
+        dropdown.findElement(By.xpath("//option[. = 'January']")).click();
+      }
+      click(By.cssSelector("select:nth-child(64) > option:nth-child(3)"));
+      click(By.name("byear"));
+      typeContact(By.name("byear"), "1999");
     }
-    click(By.cssSelector("select:nth-child(64) > option:nth-child(3)"));
-    click(By.name("byear"));
-    typeContact(By.name("byear"), "1999");
+
+    public void pushEnter () {
+      driver.findElement(By.name("byear")).sendKeys(Keys.ENTER);
+    }
   }
-
-  public void pushEnter() {
-    driver.findElement(By.name("byear")).sendKeys(Keys.ENTER);
-  }
-
-
-
-
-}

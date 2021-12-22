@@ -6,10 +6,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.safari.SafariDriver;
+import java.time.Duration;
 
 import java.util.HashMap;
 import java.util.Map;
-
+import java.util.concurrent.TimeUnit;
 
 
 public class ApplicationManager {
@@ -38,6 +39,7 @@ public class ApplicationManager {
     }
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     driver.get("http://localhost:8080/addressbook/");
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);

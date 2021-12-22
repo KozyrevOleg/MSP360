@@ -19,7 +19,7 @@ public class ContactModificationTests extends TestBase {
   public void testContactsModification() {
     app.getContactHelper().selectCheckbox();
     app.getContactHelper().editContact();
-    app.getContactHelper().fillContactForm(new ContactData1("anna","var","vit","lol","lola","ololol","99999999","lol@email.com"));
+    app.getContactHelper().fillContactForm(new ContactData1("anna","var","vit","lol","lola","ololol","99999999","lol@email.com", null),false);
     app.getContactHelper().pushEnter();
   }
 
