@@ -5,10 +5,10 @@ import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
-public class BaseHelper {
+public class HelperBase {
   public WebDriver driver;
 
-  public BaseHelper(WebDriver driver) {
+  public HelperBase(WebDriver driver) {
     this.driver = driver;
   }
 

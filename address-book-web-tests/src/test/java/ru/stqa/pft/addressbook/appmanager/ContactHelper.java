@@ -5,7 +5,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData1;
 
-public class ContactHelper extends BaseHelper {
+public class ContactHelper extends HelperBase {
 
   public ContactHelper(WebDriver driver) {
     super(driver);

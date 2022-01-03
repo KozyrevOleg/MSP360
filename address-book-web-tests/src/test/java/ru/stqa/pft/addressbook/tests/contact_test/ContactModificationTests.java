@@ -32,15 +32,15 @@ public class ContactModificationTests extends TestBase {
 
   }
 
-  @Test
+ // @Test
 
-  public void testRemoveContactFromGroup() {
+/*  public void testRemoveContactFromGroup() {
 
     app.getContactHelper().selectUserCard();
     app.getContactHelper().selectGroupFromUserCard();
     app.getContactHelper().selectCheckbox();
     app.getContactHelper().removeContactFromGroup();
     app.getContactHelper().goToSelectedGroupPage();
-  }
+  }*/
 
 }
