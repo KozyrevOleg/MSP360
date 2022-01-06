@@ -4,6 +4,7 @@ import org.junit.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.Select;
 import ru.stqa.pft.addressbook.model.ContactData1;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 public class ContactHelper extends HelperBase {
 
@@ -20,23 +21,19 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectCheckbox() {
-    click(By.id("12"));
+    click(By.name("selected[]"));
   }
 
   public void editContact() {
-    click(By.cssSelector(".odd:nth-child(3) > .center:nth-child(8) img"));
+    click(By.xpath("/html/body/div/div[4]/form[2]/table/tbody/tr[2]/td[8]/a/img"));
   }
 
   public void deleteContact() {
-    click(By.cssSelector("input:nth-child(2)"));
+    click(By.xpath("/html/body/div/div[4]/form[2]/input[2]"));
   }
 
-  public void selectTheGroup() {
-    click(By.name("to_group"));
-    {
-      WebElement dropdown = driver.findElement(By.name("to_group"));
-      dropdown.findElement(By.xpath("//option[. = 'name']")).click();
-    }
+  public void selectTheGroup(GroupData groupData) {
+    new Select(driver.findElement(By.name("to_group"))).selectByVisibleText(groupData.name());
   }
 
   public void confirmSelectedGroup() {
@@ -48,7 +45,7 @@ public class ContactHelper extends HelperBase {
   }
 
   public void goToSelectedGroupPage() {
-    click(By.linkText("group page \"name\""));
+    click(By.xpath("//*[@id=\"content\"]/div/i/a"));
   }
 
   public void removeContactFromGroup() {
@@ -56,12 +53,20 @@ public class ContactHelper extends HelperBase {
   }
 
   public void selectGroupFromUserCard() {
-    click(By.linkText("name"));
+      click(By.xpath("/html/body/div/div[4]/i[2]/a[1]"));
+  }
+
+  public void addContactToAGroup() {
+    selectCheckbox();
+    selectTheGroup(new GroupData("Test 1", null, null));
+    addToTheGroup();
+    goToSelectedGroupPage();
   }
 
   public void selectUserCard() {
-    click(By.cssSelector("tr:nth-child(6) > .center:nth-child(7) img"));
+    click(By.xpath("/html/body/div/div[4]/form[2]/table/tbody/tr[2]/td[7]/a/img"));
   }
+
 
   public void fillContactForm(ContactData1 contactData1, boolean creation) {
     click(By.name("firstname"));
@@ -81,14 +86,15 @@ public class ContactHelper extends HelperBase {
     click(By.name("email"));
     typeContact(By.name("email"), contactData1.email());
 
+    // creation or modification contact form (fill group field)
     if (creation) {
-      new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData1.group());
-    } else {
+        new Select(driver.findElement(By.name("new_group"))).selectByVisibleText(contactData1.group());
+      } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
 
-    public void fillBday () {
+    /*public void fillBday () {
       driver.findElement(By.cssSelector(".odd:nth-child(3) > .center:nth-child(8) img")).click();
       driver.findElement(By.name("bday")).click();
       {
@@ -104,9 +110,39 @@ public class ContactHelper extends HelperBase {
       click(By.cssSelector("select:nth-child(64) > option:nth-child(3)"));
       click(By.name("byear"));
       typeContact(By.name("byear"), "1999");
-    }
+    }*/
 
     public void pushEnter () {
       driver.findElement(By.name("byear")).sendKeys(Keys.ENTER);
     }
+
+  public void createAContact(ContactData1 contactData1, boolean creation) {
+    addNewContact();
+    fillContactForm(contactData1, creation);
+    submitContactCreation();
   }
+
+  public boolean isThereAContact() {
+    return isElementPresent(By.name("selected[]"));
+  }
+
+  public void goToHomePage() {
+      if (isElementPresent(By.id("search_count"))
+        && driver.findElement(By.id("searchstring")).getText().equals("searchstring")) {
+        return;
+  }
+    click(By.xpath("/html/body/div/div[3]/ul/li[1]/a"));
+  }
+
+  // xpath = string "Member of"
+    public boolean contactBelongsToAGroup() {
+    return isElementPresent(By.xpath("/html/body/div/div[4]/i[2]/a"));
+  }
+
+/* don't know why it doesn't work
+ public boolean contactBelongsToAGroup() {
+      return (isElementPresent(By.tagName("i"))
+              && driver.findElement(By.tagName("i")).getText().equals("Member of: "));
+  }*/
+}
+

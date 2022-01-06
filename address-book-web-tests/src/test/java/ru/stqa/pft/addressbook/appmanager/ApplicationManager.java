@@ -39,7 +39,7 @@ public class ApplicationManager {
     }
     js = (JavascriptExecutor) driver;
     vars = new HashMap<String, Object>();
-    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
     driver.get("http://localhost:8080/addressbook/");
     groupHelper = new GroupHelper(driver);
     navigationHelper = new NavigationHelper(driver);

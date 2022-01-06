@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.remote.Browser;
 import org.openqa.selenium.remote.BrowserType;
 import ru.stqa.pft.addressbook.appmanager.ApplicationManager;
+import ru.stqa.pft.addressbook.model.ContactData1;
+import ru.stqa.pft.addressbook.model.GroupData;
 
 public class TestBase {
 
